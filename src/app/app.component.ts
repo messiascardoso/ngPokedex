@@ -1,18 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { PokemonService } from './services/PokemonService'
+import { forkJoin } from 'rxjs/observable/forkJoin' // equivalente ao Promise.All
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  titulo = 'CaelumPic';
-  fotos = [
-    { url: 'https://cdn.bulbagarden.net/upload/thumb/7/7e/006Charizard.png/250px-006Charizard.png', titulo: 'Charizard' },
-    { url: 'https://cdn.bulbagarden.net/upload/thumb/8/8b/149Dragonite.png/250px-149Dragonite.png', titulo: 'Dragonite' },
-    { url: 'https://cdn.bulbagarden.net/upload/thumb/9/97/064Kadabra.png/250px-064Kadabra.png', titulo: 'Kadabra' },
-    { url: 'https://cdn.bulbagarden.net/upload/thumb/f/fb/143Snorlax.png/250px-143Snorlax.png', titulo: 'Snorlax' },
-    { url: 'https://cdn.bulbagarden.net/upload/thumb/5/53/054Psyduck.png/250px-054Psyduck.png', titulo: 'Psyduck' },
-    { url: 'https://cdn.bulbagarden.net/upload/thumb/3/3e/039Jigglypuff.png/250px-039Jigglypuff.png', titulo: 'Jigglypuff'}
-  ]
+export class AppComponent implements OnInit {
+  titulo = 'NgDex';
+  pokemonService: PokemonService
+
+  private randomPkmn: Array<ObjectURLOptions> = [];
+
+  constructor (pokemonService: PokemonService){
+    this.pokemonService = pokemonService
+    /*let pkmonhttp = []
+    this.pokemonService = pokemonService
+    //Array.from({length: 9}, () => this.pokemonService.procurarPorId(Math.floor(Math.random() * 250)).subscribe(pkmn => this.randomPkmn.push(pkmn)))
+    Array.from({length:9}, () => pkmonhttp.push(this.pokemonService.procurarPorId(Math.floor(Math.random() * 250))))
+    forkJoin(pkmonhttp).subscribe(results => results.map(result => this.randomPkmn.push(result)))*/
+  }
+
+  ngOnInit() {
+    let pkmonhttp = []
+    //Array.from({length: 9}, () => this.pokemonService.procurarPorId(Math.floor(Math.random() * 250)).subscribe(pkmn => this.randomPkmn.push(pkmn)))
+    Array.from({length:9}, () => pkmonhttp.push(this.pokemonService.procurarPorId( (Math.floor(Math.random() * 250)) + 1)))
+    forkJoin(pkmonhttp).subscribe(results => results.map(result => this.randomPkmn.push(result)))
+  }
 }

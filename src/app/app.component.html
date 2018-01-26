@@ -1,28 +1,39 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4 text-truncate">
-      <i class="fa fa-camera-retro"></i>
-      {{titulo}}
-    </h1>
-  </div>
-</div>
-<div class="container">
-  <div class="row mb-3">
-    <div class="col-md-12 col-lg-12">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text">
-            <i class="fa fa-search"></i>
-          </span>
+<div class="grid-box">
+  <header role="header">
+    <nav  class="navbar navbar-light bg-light">
+      <h1 class="display-4 text-truncate">
+        <img src="/assets/icons/pkmn.svg" alt="pkmn" width="70" height="70">{{titulo}}
+      </h1>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="row mb-3 mt-4">
+        <div class="col-md-12 col-lg-12">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fa fa-search"></i>
+              </span>
+            </div>
+            <input type="text" class="form-control" placeholder="Search Pkmn">
+          </div>
         </div>
-        <input type="text" class="form-control" placeholder="Search Pkmn">
+      </div>
+      <div class="row">
+        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12" *ngFor="let pkmn of randomPkmn">
+          <card [pkmn]="pkmn"></card>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12" *ngFor="let foto of fotos">
-      <app-foto [url]="foto.url" [titulo]="foto.titulo"></app-foto>
-    </div>
-  </div>
-</div>
+  </main>
 
+  <footer class="boxes">
+    <nav  class="navbar navbar-light bg-light mt-4">
+      <h5 class="text-truncate">
+        @Tiago Mota // NgDex
+      </h5>
+    </nav>
+  </footer>
+</div>

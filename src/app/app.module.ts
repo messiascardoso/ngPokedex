@@ -1,18 +1,27 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { FotoModule } from './foto/foto.module';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser'
+import { NgModule } from '@angular/core'
+import { HttpModule } from '@angular/http'
 
+import { CardModule } from './components/card/card.module'
+
+import { AppComponent } from './app.component'
+
+import { PokemonService } from './services/PokemonService'
+
+import 'rxjs/add/operator/map'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
-    FotoModule
+    CommonModule,
+    CardModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [ PokemonService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
