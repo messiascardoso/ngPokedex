@@ -1,10 +1,14 @@
-<div class="card mb-3 text-truncate">
-  <foto [url]="pkmn.sprites.front_default" [titulo]="pkmn.name" *ngIf="!destruido"></foto>
-  <div class="card-body">
-    <h5 class="card-title">{{'#' + pkmn.id }} {{ pkmn.name|capitalize:pkmn.name}}</h5>
-    <span class="badge badge-primary" *ngFor="let type of pkmn.types">
-      {{ type.type.name | capitalize:type.type.name }}
-    </span>
-    <button (click)="destruirCiclo()">Seek & destroy</button>
+<!--div-->
+  <div class="card mb-2">
+    <div class="card-image">
+      <foto [url]="pkmn.sprites.front_default" [titulo]="pkmn.name" *ngIf="!destruido"></foto>
+    </div>
+    <div class="card-header bg-secondary">
+      <h5 class="card-title">{{'#' + pkmn.id }} {{ pkmn.name|capitalize:pkmn.name}}</h5>
+    </div>
+    <div class="card-body bg-secondary">
+      <badge [tipos]="pkmn.types"></badge>
+      <!--button (click)="destruirCiclo()">Seek & destroy</button-->
+    </div>
   </div>
-</div>
+<!--/div-->

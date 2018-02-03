@@ -1,39 +1,39 @@
 <div class="grid-box">
-  <header role="header">
-    <nav  class="navbar navbar-light bg-light">
-      <h1 class="display-4 text-truncate">
-        <img src="/assets/icons/pkmn.svg" alt="pkmn" width="70" height="70">{{titulo}}
-      </h1>
-    </nav>
+  <header class="navbar bg-secondary p-2" role="header">
+    <section class="navbar-section">
+      <a class="navbar-brand mr-2">
+        <img src="/assets/icons/pkmn.svg" alt="pkmn" width="70" height="70">
+      </a>
+      <h3>{{titulo}}</h3>
+    </section>
   </header>
 
-  <main>
-    <div class="container">
-      <div class="row mb-3 mt-4">
-        <div class="col-md-12 col-lg-12">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">
-                <i class="fa fa-search"></i>
-              </span>
-            </div>
-            <input type="text" class="form-control" placeholder="Search Pkmn">
-          </div>
-        </div>
+  <main class="container mt-2">
+    <div class="columns mb-2">
+      <div class="column col-12">
+        <auto-complete></auto-complete>
       </div>
-      <div class="row">
-        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12" *ngFor="let pkmn of randomPkmn">
-          <card [pkmn]="pkmn"></card>
-        </div>
+    </div>
+    <div class="columns mt-1">
+      <div class="column col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12"  *ngFor="let pkmn of randomPkmn">
+        <card [pkmn]="pkmn"></card>
+      </div>
+    </div>
+    <div class="columns mt-1" *ngIf="!randomPkmn.length">
+      <div class="column col-12">
+        <div class="loading loading-lg"></div>
+        <h4 class="text-center">Carregando</h4>
       </div>
     </div>
   </main>
 
-  <footer class="boxes">
-    <nav  class="navbar navbar-light bg-light mt-4">
-      <h5 class="text-truncate">
-        @Tiago Mota // NgDex
-      </h5>
+  <footer class="mt-2">
+    <nav class="navbar bg-secondary p-2">
+      <section class="navbar centered">
+        <h5 class="text-truncate">
+          @Tiago Mota // NgDex
+        </h5>
+      </section>
     </nav>
   </footer>
 </div>

@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     let pkmonhttp = []
     //Array.from({length: 9}, () => this.pokemonService.procurarPorId(Math.floor(Math.random() * 250)).subscribe(pkmn => this.randomPkmn.push(pkmn)))
-    Array.from({length:9}, () => pkmonhttp.push(this.pokemonService.procurarPorId( (Math.floor(Math.random() * 250)) + 1)))
+    Array.from({length:9}, () => pkmonhttp.push(this.pokemonService.procurarPorId( (Math.floor(Math.random() * 251)) + 1)))
     forkJoin(pkmonhttp).subscribe(results => results.map(result => this.randomPkmn.push(result)))
   }
 }

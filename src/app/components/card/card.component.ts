@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core'
 
 @Component({
   selector: 'card',
@@ -11,7 +11,7 @@ export class CardComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
   @Input() pkmn;
   destruirCiclo(){
     this.destruido = true
