@@ -10,11 +10,7 @@ export class PokemonService {
     this.http = http
   }
 
-  procurarPorId (id) {
-    return this.http.get(`${this.baseUrl}/pokemon/${id}/`).map( pkmn => pkmn.json())
-  }
-
-  procurarPorNome (nome) {
-
+  procurarPkmn (param) {
+    return this.http.get(`${this.baseUrl}/pokemon/${param}/`).map( pkmn => pkmn.json())
   }
 }

@@ -1,9 +1,9 @@
-import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { HttpModule } from '@angular/http'
 
 import { CardModule } from './components/card/card.module'
+import { AutoCompleteModule } from './components/autocomplete/autocomplete.module';
 
 import { AppComponent } from './app.component'
 
@@ -17,11 +17,11 @@ import 'rxjs/add/operator/map'
   ],
   imports: [
     BrowserModule,
-    CommonModule,
+    HttpModule,
     CardModule,
-    HttpModule
+    AutoCompleteModule
   ],
   providers: [ PokemonService ],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
